@@ -34,7 +34,7 @@ let NERDTreeIgnore = ['\.pyc$','.DS_Store$','\.swp$','__pycache__$','.vscode$']
 let NERDTreeShowHidden=1
 
 set fillchars+=vert:.
-hi StatusLine ctermbg=238 ctermfg=10
+hi StatusLine ctermbg=black ctermfg=white
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -51,10 +51,10 @@ function! InsertStatuslineColor(mode)
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline ctermfg=10 ctermbg=238
+au InsertLeave * hi statusline guibg=DarkGrey ctermfg=10 guifg=White ctermbg=0
 
 " default the statusline to green when entering Vim
-hi statusline ctermfg=238 ctermbg=10 guibg=colour238 guifg=colour10
+hi statusline guibg=DarkGrey ctermfg=10 guifg=White ctermbg=0
 
 " Formats the statusline
 set statusline=%f                           " file name
@@ -78,3 +78,15 @@ set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
 set statusline+=\ Col:%c                    " current column
 " set statusline+=\ Buf:%n                    " Buffer number
 " set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
+"
+" Set Tabs
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+
+set shiftwidth=4    " Indents will have a width of 4
+
+set softtabstop=4   " Sets the number of columns for a TAB
+
+set expandtab       " Expand TABs to spaces
