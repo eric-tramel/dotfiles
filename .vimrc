@@ -34,7 +34,7 @@ let NERDTreeIgnore = ['\.pyc$','.DS_Store$','\.swp$','__pycache__$','.vscode$']
 let NERDTreeShowHidden=1
 
 set fillchars+=vert:.
-hi StatusLine ctermbg=black ctermfg=white
+hi StatusLine ctermbg=238 ctermfg=10
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -51,10 +51,10 @@ function! InsertStatuslineColor(mode)
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=DarkGrey ctermfg=10 guifg=White ctermbg=0
+au InsertLeave * hi statusline ctermfg=10 ctermbg=238
 
 " default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=10 guifg=White ctermbg=0
+hi statusline ctermfg=238 ctermbg=10 guibg=colour238 guifg=colour10
 
 " Formats the statusline
 set statusline=%f                           " file name
