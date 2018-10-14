@@ -32,3 +32,4 @@ Some things that I want to do.
 7. Set-up a snippet or skeleton for doing numpydocs comments
 8. Get `black` to run on save calls (along with `savetags`).
 9. Research Markdown-specific plugins for `vim`.
+10. Learn how to use `fugitive` correctly for manging git projects and save myself a lot of time fusing with commits.
