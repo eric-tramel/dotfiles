@@ -1,3 +1,4 @@
+"""1. Installed Plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
