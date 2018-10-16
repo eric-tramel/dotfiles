@@ -1,5 +1,7 @@
+"""1. Installed Plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'suan/vim-instant-markdown'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
