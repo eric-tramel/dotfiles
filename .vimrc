@@ -9,6 +9,7 @@ Plug 'tmhedberg/simpylfold'
 Plug 'scrooloose/syntastic'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -25,6 +26,7 @@ set mouse=a
 set backspace=indent,eol,start
 set scrolloff=10
 set noshowmode
+set splitright
 
 """ 3. Configure Plugins
 autocmd vimenter * NERDTree
@@ -41,10 +43,15 @@ let g:lightline = {
 
 set fillchars+=vert:.
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
+
 
 " Set Tabs
 set tabstop=4       " The width of a TAB is set to 4.
