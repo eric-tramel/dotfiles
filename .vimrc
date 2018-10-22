@@ -35,6 +35,11 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeIgnore = ['\.pyc$','.DS_Store$','\.swp$','__pycache__$','.vscode$']
 let NERDTreeShowHidden=1
 
+"""" vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+
 """ 4. Set color schemes
 colorscheme tokyo-metro
 let g:lightline = {
