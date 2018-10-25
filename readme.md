@@ -22,7 +22,7 @@ defaults write -g InitialKeyRepeat 10
 
 Some things that I want to do.
 
-1. Get fold-jumping comitted (copy from work remote)
+1. ~~Get fold-jumping comitted (copy from work remote)~~
 2. Get `ctags` running for proper tag jumping in `vim`.
 3. Get fuzzy file switching up and going (may just be training)
     - Check on that vim video where the guy was doing everything without pugins and had the demonstration of using the `**` indicator to allow for searching within subdirectories automatically.
