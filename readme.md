@@ -20,16 +20,17 @@ defaults write -g InitialKeyRepeat 10
 
 ## TODO
 
-Some things that I want to do.
+- ~~Get fold-jumping comitted (copy from work remote)~~
 
-1. Get fold-jumping comitted (copy from work remote)
-2. Get `ctags` running for proper tag jumping in `vim`.
-3. Get fuzzy file switching up and going (may just be training)
+- Get `ctags` running for proper tag jumping in `vim`.
+- Get fuzzy file switching up and going (may just be training)
     - Check on that vim video where the guy was doing everything without pugins and had the demonstration of using the `**` indicator to allow for searching within subdirectories automatically.
-4. Remap save to something nice and easy (`ctrl-s`?)
-5. Figure out why the capslock escape is slow.
-6. Get a better understanding of completions
-7. Set-up a snippet or skeleton for doing numpydocs comments
-8. Get `black` to run on save calls (along with `savetags`).
-9. Research Markdown-specific plugins for `vim`.
-10. Learn how to use `fugitive` correctly for manging git projects and save myself a lot of time fusing with commits.
+- Remap save to something nice and easy (`ctrl-s`?)
+- ~~Figure out why the capslock escape is slow.~~
+- Get a better understanding of completions
+- Set-up a snippet or skeleton for doing numpydocs comments
+- Get `black` to run on save calls (along with `savetags`).
+- ~~Research Markdown-specific plugins for `vim`.~~
+    - Get word-wrapping to activate based on file type, along with text limit
+    - Use non-breaking spaces for markdown, but use breaking spaces for tex.
+-  Learn how to use `fugitive` correctly for manging git projects and save myself a lot of time fusing with commits.
