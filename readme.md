@@ -9,6 +9,18 @@ Here I am simply collecting all of my local terminal configurations into one pla
 - Karabiner
     - Used for remapping `caps-lock` to `escape`.
 
+## Setup
+
+```
+cd $HOME/src
+git clone git@gihub.com:eric-tramel/dotfiles.git
+git clone https://github.com/koirand/tokyo-metro.vim.git
+ln -s $HOME/src/tokyo-metro.vim/colors/tokyo-metro.vim ~/.vim/colors/tokyo-metro.vim
+ln -s $HOME/src/dotfiles/.vimrc ~/.vimrc
+ln -s $HOME/src/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s $HOME/src/dotfiles/karabiner ~/.config/karabiner
+```
+
 ## Resetting Key Presses
 
 To speed things up on OSX, we want to increase the repeat and repeat delay. This used to be able to be accomplished through Karabiner, but not since some recent OSX changes, so we will instead need to use the following settings through terminal.
