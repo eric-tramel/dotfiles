@@ -8,9 +8,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'tmhedberg/simpylfold'
 Plug 'scrooloose/syntastic'
 Plug 'vimwiki/vimwiki'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -47,9 +49,11 @@ nmap <F8> :TagbarToggle<CR>
 
 """ 4. Set color schemes
 colorscheme tokyo-metro
-let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ }
+"let g:lightline = {
+"    \ 'colorscheme': 'wombat',
+"    \ }
+" For Airline
+let g:airline_theme='bubblegum'
 
 set fillchars+=vert:.
 
