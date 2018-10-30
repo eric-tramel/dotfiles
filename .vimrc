@@ -10,6 +10,7 @@ Plug 'scrooloose/syntastic'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -29,16 +30,20 @@ set noshowmode
 set splitright
 
 """ 3. Configure Plugins
+"""" NerdTree
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeIgnore = ['\.pyc$','.DS_Store$','\.swp$','__pycache__$','.vscode$']
 let NERDTreeShowHidden=1
+let g:NERDTreeWinSize=20
 
 """" vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
+"""" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
 """ 4. Set color schemes
 colorscheme tokyo-metro
@@ -48,10 +53,6 @@ let g:lightline = {
 
 set fillchars+=vert:.
 
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
