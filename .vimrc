@@ -7,9 +7,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tmhedberg/simpylfold'
 Plug 'scrooloose/syntastic'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
