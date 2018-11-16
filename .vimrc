@@ -1,16 +1,13 @@
 """1. Installed Plugins
 call plug#begin('~/.vim/plugged')
 
-" Plug 'suan/vim-instant-markdown'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tmhedberg/simpylfold'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 "Plug 'vimwiki/vimwiki'
-" Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
@@ -59,6 +56,17 @@ let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" ALE Configs
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%severity%] %s [%linter%] (%code%)'
+
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
+
 "" from help
 " air-line
 let g:airline_powerline_fonts = 1
@@ -66,6 +74,7 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+let g:airline#extensions#ale#enabled = 1
 
 " unicode symbols
 let g:airline_left_sep = '»'
