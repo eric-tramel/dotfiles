@@ -12,8 +12,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'vim-scripts/indentpython.vim'
+"Plug 'davidhalter/jedi-vim'
 
 call plug#end()
+
+
 
 """ 2. Basic vim configiruation
 set number
@@ -122,6 +126,9 @@ set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
 
+
+""" For Python
+au BufRead,BufNewFile *.py,*.pyw match Cursor /\s\+$/
 
 
 " Trying some fold jumping key mapping per
