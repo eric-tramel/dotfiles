@@ -12,6 +12,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
 
 call plug#end()
 
@@ -29,6 +31,11 @@ set backspace=indent,eol,start
 set scrolloff=10
 set noshowmode
 set splitright
+"" I had to add the following two lines because for some reason,
+"" after upgrading vim, I started to get a bunch of '[?]' on 
+"" glpyhs.
+set termencoding=utf-8
+set encoding=utf-8
 
 """ 3. Configure Plugins
 """" NerdTree
@@ -42,6 +49,13 @@ let g:NERDTreeWinSize=20
 """" vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
+
+""" Markdown settings
+let g:vim_markdown_new_list_item_indent = 4
+let g:vim_markdown_math = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_folding_disabled=1
+
 
 """" Tagbar
 nmap <F8> :TagbarToggle<CR>
