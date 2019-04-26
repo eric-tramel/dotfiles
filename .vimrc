@@ -14,6 +14,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -24,9 +25,9 @@ set number
 set relativenumber
 set showcmd
 set wildmenu
-syntax on
 syntax enable
 filetype indent plugin on
+syntax on
 set nocompatible
 set mouse=a
 set backspace=indent,eol,start
@@ -140,6 +141,12 @@ set expandtab       " Expand TABs to spaces
 
 """ For Python
 au BufRead,BufNewFile *.py,*.pyw match Cursor /\s\+$/
+
+""" For LaTeX
+let g:tex_flavor='latex'
+let g:vimtex_quickfixx_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 
 " Trying some fold jumping key mapping per
