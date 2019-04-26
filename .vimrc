@@ -17,6 +17,8 @@ Plug 'godlygeek/tabular'
 
 call plug#end()
 
+
+
 """ 2. Basic vim configiruation
 set number
 set relativenumber
@@ -135,6 +137,9 @@ set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
 
+
+""" For Python
+au BufRead,BufNewFile *.py,*.pyw match Cursor /\s\+$/
 
 
 " Trying some fold jumping key mapping per
