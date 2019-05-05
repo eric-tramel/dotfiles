@@ -1,6 +1,7 @@
 """1. Installed Plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
@@ -64,12 +65,15 @@ let g:vim_markdown_folding_disabled=1
 nmap <F8> :TagbarToggle<CR>
 
 """ 4. Set color schemes
-colorscheme tokyo-metro
+"colorscheme tokyo-metro
+colorscheme nord
+let g:nord_italic = 1
 "let g:lightline = {
 "    \ 'colorscheme': 'wombat',
 "    \ }
 " For Airline
-let g:airline_theme='bubblegum'
+"let g:airline_theme='bubblegum'
+let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
