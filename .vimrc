@@ -16,6 +16,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 Plug 'lervag/vimtex'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -172,3 +173,6 @@ function! NextClosedFold(dir)
         call winrestview(view)
     endif
 endfunction
+
+" Trying stuff for tags
+" set statusline+=%{gutentags#statusline('>>','')}
