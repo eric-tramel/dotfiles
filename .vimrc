@@ -21,7 +21,6 @@ Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 
-
 """ 2. Basic vim configiruation
 set number
 set relativenumber
