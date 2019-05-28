@@ -1,0 +1,13 @@
+# Mac
+*~
+.DS_Store
+
+# VIM
+.*.sw*
+tags
+
+# IDE: Pycharm
+.idea/*
+
+# IDE: VSCode
+.vscode/

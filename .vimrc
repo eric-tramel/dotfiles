@@ -17,6 +17,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 Plug 'lervag/vimtex'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
