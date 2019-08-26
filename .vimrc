@@ -1,13 +1,12 @@
 """1. Installed Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'eric-tramel/nord-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tmhedberg/simpylfold'
 Plug 'w0rp/ale'
-"Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
