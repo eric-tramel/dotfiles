@@ -16,8 +16,11 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/vim-easy-align'
 Plug 'godlygeek/tabular'
 Plug 'lervag/vimtex'
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/goyo.vim'
+Plug 'pedrohdz/vim-yaml-folds'
+Plug 'CrispyDrone/vim-tasks'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -172,3 +175,4 @@ endfunction
 
 " Trying stuff for tags
 " set statusline+=%{gutentags#statusline('>>','')}
+let g:gutentags_exclude_filetypes=['tex', 'latex']
