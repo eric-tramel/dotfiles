@@ -4,21 +4,13 @@ Here I am simply collecting all of my local terminal configurations into one pla
 
 ## Terminal Software
 
-- iTerm2 
-    - Using colorscheme `Spacedust`
-- Karabiner
-    - Used for remapping `caps-lock` to `escape`.
-
 ## Setup
 
 ```
 cd $HOME/src
 git clone git@gihub.com:eric-tramel/dotfiles.git
-git clone https://github.com/koirand/tokyo-metro.vim.git
-ln -s $HOME/src/tokyo-metro.vim/colors/tokyo-metro.vim ~/.vim/colors/tokyo-metro.vim
-ln -s $HOME/src/dotfiles/.vimrc ~/.vimrc
+ln -s $HOME/src/dotfiles/nvim ~/.config/nvim
 ln -s $HOME/src/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s $HOME/src/dotfiles/karabiner ~/.config/karabiner
 ```
 
 ## Resetting Key Presses
@@ -32,7 +24,5 @@ defaults write -g InitialKeyRepeat 10
 
 ## TODO
 
+- Integration with [chezmoi](chezmoi.io)?
 
-- Get `ctags` running for proper tag jumping in `vim`.
-- Get fuzzy file switching up and going (may just be training)
-    - Check on that vim video where the guy was doing everything without pugins and had the demonstration of using the `**` indicator to allow for searching within subdirectories automatically.
