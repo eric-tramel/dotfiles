@@ -82,6 +82,8 @@ in {
     pkgs.uv
     pkgs.htop
     pkgs.imgcat
+    pkgs.nodejs
+    pkgs.ripgrep
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -210,6 +212,8 @@ in {
     set -g set-clipboard on
     set -g status-position top
     setw -g mode-keys vi
+    setw -g automatic-rename on
+    setw -g automatic-rename-format "#T"
 
     # Do some key-bound pane adjusting
     bind -r C-k resize-pane -U
@@ -236,8 +240,8 @@ in {
     set -g @catppuccin_window_middle_separator " █"
     set -g @catppuccin_window_number_position "right"
     set -g @catppuccin_window_default_fill "number"
-    set -g @catppuccin_window_default_text "#W"
     set -g @catppuccin_window_current_fill "number"
+    set -g @catppuccin_window_default_text "#W"
     set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
     set -g @catppuccin_status_modules_right "directory date_time"
     set -g @catppuccin_status_modules_left "session"
@@ -248,6 +252,10 @@ in {
     set -g @catppuccin_status_connect_separator "no"
     set -g @catppuccin_directory_text "#{b:pane_current_path}"
     set -g @catppuccin_date_time_text "%H:%M"
+
+    run-shell ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux
+    run-shell ${tmuxPlugins.tmux-floax}/share/tmux-plugins/tmux-floax/tmux_floax.tmux
+    run-shell ${tmuxPlugins.tmux-sessionx}/share/tmux-plugins/tmux-sessionx/tmux_sessionx.tmux
     '';
   };
 
@@ -255,6 +263,16 @@ in {
     enable = true;
     userName = "Eric W. Tramel";
     userEmail = "eric.tramel@gmail.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    defaultCommand = ''
+    rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"
+    '';
   };
 
 }
