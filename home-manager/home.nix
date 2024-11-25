@@ -46,6 +46,18 @@ let
     hash = "sha256-H8bouVCS46h0DgQ+oYY8JitahQDj0V9p2cOoD4cQX+Q=";
   };
 
+  # uvOverlay = self: super: {
+  #   uv = super.uv.overrideAttrs (oldAttrs: rec {
+  #     version = "0.5.2"; # Specify the desired version here
+  #     src = super.fetchFromGitHub {
+  #       owner = "astral-sh";
+  #       repo = "uv";
+  #       rev = "refs/tags/${version}";
+  #       hash = "sha256-riR4VFv407/pLMdQlxTUvTeaErZoxjFFsEX9St+3cr8="; # Replace with the correct hash
+  #     };
+  #     cargoDeps = pkgs.rustPlatform.fetchCargoVendor { inherit src; hash = ""; };
+  # });
+  # };
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -60,6 +72,9 @@ in {
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
+
+
+  #nixpkgs.overlays = [ uvOverlay ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -79,11 +94,13 @@ in {
     pkgs.chezmoi
     pkgs.alacritty
     pkgs.gita
-    pkgs.uv
     pkgs.htop
     pkgs.imgcat
     pkgs.nodejs
     pkgs.ripgrep
+    pkgs.fd
+    pkgs.btop
+    pkgs.uv
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -236,7 +253,7 @@ in {
     ## https://github.com/omerxx/dotfiles/blob/master/tmux/tmux.conf
     set -g @catppuccin_flavour 'mocha'
     set -g @catppuccin_window_left_separator ""
-    set -g @catppuccin_window_right_separator " "
+    set -g @catppuccin_window_right_separator " "
     set -g @catppuccin_window_middle_separator " █"
     set -g @catppuccin_window_number_position "right"
     set -g @catppuccin_window_default_fill "number"
