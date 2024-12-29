@@ -39,25 +39,6 @@ let
     };
   };
 
-  catppuccinAlacrittyTheme = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "alacritty";
-    rev = "f6cb5a5c2b404cdaceaff193b9c52317f62c62f7";
-    hash = "sha256-H8bouVCS46h0DgQ+oYY8JitahQDj0V9p2cOoD4cQX+Q=";
-  };
-
-  # uvOverlay = self: super: {
-  #   uv = super.uv.overrideAttrs (oldAttrs: rec {
-  #     version = "0.5.2"; # Specify the desired version here
-  #     src = super.fetchFromGitHub {
-  #       owner = "astral-sh";
-  #       repo = "uv";
-  #       rev = "refs/tags/${version}";
-  #       hash = "sha256-riR4VFv407/pLMdQlxTUvTeaErZoxjFFsEX9St+3cr8="; # Replace with the correct hash
-  #     };
-  #     cargoDeps = pkgs.rustPlatform.fetchCargoVendor { inherit src; hash = ""; };
-  # });
-  # };
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -73,26 +54,19 @@ in {
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-
-  #nixpkgs.overlays = [ uvOverlay ];
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
     pkgs.hello
     pkgs.bat
     pkgs.zoxide
-    pkgs.nerdfonts
+    pkgs.nerd-fonts.fira-code
     pkgs.fzf
     pkgs.oh-my-zsh
     pkgs.spaceship-prompt
     pkgs.jq
     pkgs.tree
     pkgs.chezmoi
-    pkgs.alacritty
     pkgs.gita
     pkgs.htop
     pkgs.imgcat
@@ -101,6 +75,9 @@ in {
     pkgs.fd
     pkgs.btop
     pkgs.uv
+    pkgs.wget
+    pkgs.aerospace
+    pkgs.jankyborders
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -129,9 +106,6 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    # Link the Catppuccin Mocha theme file for Alacritty
-    ".config/alacritty/themes/catppuccin_mocha.toml".source = "${catppuccinAlacrittyTheme}/catppuccin-mocha.toml";
   };
 
   # Home Manager can also manage your environment variables through
@@ -152,7 +126,6 @@ in {
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    FOO = "bar";
   };
 
   # Let Home Manager install and manage itself.
@@ -185,27 +158,6 @@ in {
     vimAlias = true;
     vimdiffAlias = true;
   };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      general.import = [ "~/.config/alacritty/themes/catppuccin_mocha.toml" ];
-      font.size = 12;
-      font.normal = {
-        family  = "FiraCode Nerd Font Propo";
-        style = "Retina";
-      };
-      font.bold = {
-        family  = "FiraCode Nerd Font Propo";
-        style = "Bold";
-      };
-      font.italic = {
-        family  = "FiraCode Nerd Font Propo";
-        style = "Light";
-      };
-    };
-  };
-
 
   programs.tmux = {
     enable = true;
@@ -292,4 +244,91 @@ in {
     '';
   };
 
+  home.file."${config.xdg.configHome}/borders/bordersrc".text = ''
+  #!/bin/bash
+  
+  options=(
+      style=round
+      width=4.0
+      hidpi=on
+      active_color=0xffebbc62
+      inactive_color=0xff414550
+  )
+
+  borders "''${options[@]}"
+  '';
+
+  home.file."${config.xdg.configHome}/aerospace/aerospace.toml".text = ''
+  after-startup-command = ['exec-and-forget /Users/eric/.nix-profile/bin/borders']
+
+  start-at-login = true
+
+  default-root-container-layout = 'tiles'
+  default-root-container-orientation = 'auto'
+  automatically-unhide-macos-hidden-apps = true
+
+  [key-mapping]
+  preset = 'qwerty'
+
+  [gaps]
+  inner.horizontal = 12
+  inner.vertical =   12
+  outer.left =       8
+  outer.bottom =     8
+  outer.top =        8
+  outer.right =      8
+
+  [mode.main.binding]
+  alt-h = 'focus left'
+  alt-j = 'focus down'
+  alt-k = 'focus up'
+  alt-l = 'focus right'
+
+  alt-shift-h = 'move left'
+  alt-shift-j = 'move down'
+  alt-shift-k = 'move up'
+  alt-shift-l = 'move right'  
+
+  alt-shift-minus = 'resize smart -50'
+  alt-shift-equal = 'resize smart +50'
+
+
+  alt-1 = 'workspace 1'
+  alt-2 = 'workspace 2'
+  alt-3 = 'workspace 3'
+  alt-4 = 'workspace 4'
+  alt-5 = 'workspace 5'
+  alt-6 = 'workspace 6'
+  alt-7 = 'workspace 7'
+  alt-8 = 'workspace 8'
+  alt-9 = 'workspace 9'
+
+  alt-shift-1 = 'move-node-to-workspace 1'
+  alt-shift-2 = 'move-node-to-workspace 2'
+  alt-shift-3 = 'move-node-to-workspace 3'
+  alt-shift-4 = 'move-node-to-workspace 4'
+  alt-shift-5 = 'move-node-to-workspace 5'
+  alt-shift-6 = 'move-node-to-workspace 6'
+  alt-shift-7 = 'move-node-to-workspace 7'
+  alt-shift-8 = 'move-node-to-workspace 8'
+  alt-shift-9 = 'move-node-to-workspace 9'
+
+  alt-tab = 'workspace-back-and-forth'
+
+  alt-shift-semicolon = 'mode service'
+
+  [mode.service.binding]
+  alt-shift-h = ['join-with left', 'mode main']
+  alt-shift-j = ['join-with down', 'mode main']
+  alt-shift-k = ['join-with up', 'mode main']
+  alt-shift-l = ['join-with right', 'mode main']
+  '';
+
+  home.file."${config.xdg.configHome}/ghostty/config".text = ''
+  shell-integration = zsh
+  title = " "
+  macos-titlebar-style = hidden
+  macos-titlebar-proxy-icon = hidden
+  macos-window-shadow = false
+  '';
 }
