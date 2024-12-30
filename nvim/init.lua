@@ -924,6 +924,19 @@ require("lazy").setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    keys = {
+      { "<leader>t", vim.cmd.ToggleTerm, desc = "Open [t]erminal" }
+    },
+    opts = {
+      direction = 'float',
+      float_opts = {
+        border = 'curved',
+      }
+    }
+  },
   -----------------------------------------------------------------------------
   -- PYTHON REPL
   -- A basic REPL that opens up as a horizontal split
@@ -1029,6 +1042,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>v", "<cmd>VenvSelect<cr>", { desc = "Set Python en[v]ironment" })
     end,
   },
+
   -- DEBUGGING
 
   -- DAP Client for nvim
