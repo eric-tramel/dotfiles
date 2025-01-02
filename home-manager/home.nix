@@ -1,6 +1,11 @@
 { config, pkgs, lib, ... }:
 
 let 
+  bazel_symlink_bazelisk = pkgs.runCommand "bazel" { } ''
+    mkdir -p $out/bin
+    ln -s ${pkgs.bazelisk}/bin/bazelisk $out/bin/bazel
+  '';
+
   tmuxPlugins = {
     tmux-sessionx = pkgs.tmuxPlugins.mkTmuxPlugin {
       pluginName = "tmux-sessionx";
@@ -39,6 +44,22 @@ let
     };
   };
 
+  customAwscli2 = pkgs.awscli2.overrideAttrs (oldAttrs: {
+    postPatch = ''
+      substituteInPlace pyproject.toml \
+        --replace-fail 'flit_core>=3.7.1,<3.9.1' 'flit_core>=3.7.1' \
+        --replace-fail 'awscrt>=0.19.18,<=0.22.0' 'awscrt>=0.22.0' \
+        --replace-fail 'cryptography>=40.0.0,<43.0.2' 'cryptography>=43.0.0' \
+        --replace-fail 'distro>=1.5.0,<1.9.0' 'distro>=1.5.0' \
+        --replace-fail 'docutils>=0.10,<0.20' 'docutils>=0.10' \
+        --replace-fail 'prompt-toolkit>=3.0.24,<3.0.39' 'prompt-toolkit>=3.0.24'
+      substituteInPlace requirements-base.txt \
+        --replace-fail "wheel==0.43.0" "wheel>=0.43.0"
+      # Remove pip requirement as dependencies are provided via PYTHONPATH
+      sed -i '/pip>=/d' requirements/bootstrap.txt
+    '';
+  });
+
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -57,7 +78,8 @@ in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.hello
+    bazel_symlink_bazelisk
+    customAwscli2
     pkgs.bat
     pkgs.zoxide
     pkgs.nerd-fonts.fira-code
@@ -67,6 +89,7 @@ in {
     pkgs.jq
     pkgs.tree
     pkgs.chezmoi
+    pkgs.git
     pkgs.gita
     pkgs.htop
     pkgs.imgcat
@@ -78,6 +101,21 @@ in {
     pkgs.wget
     pkgs.aerospace
     pkgs.jankyborders
+    pkgs.cmake
+    pkgs.docker
+    pkgs.bazelisk
+    pkgs.direnv
+    pkgs.kubectl
+    pkgs.sentencepiece
+    pkgs.tfswitch
+    pkgs.rustc
+    pkgs.cargo
+    pkgs.pyenv
+    pkgs.go
+    pkgs.ssm-session-manager-plugin
+    pkgs.parallel
+    pkgs.hyperfine
+    pkgs.xz
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -143,6 +181,10 @@ in {
       source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
       autoload -U promptinit; promptinit
       prompt spaceship
+
+      # Set the direnv init
+      eval "$(direnv hook zsh)"
+
     '';
   };
   
