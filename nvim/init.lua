@@ -608,7 +608,15 @@ require("lazy").setup({
             client.server_capabilities.hoverProvider = false
           end,
         },
-        basedpyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "standard",
+              },
+            },
+          },
+        },
         taplo = {},
         -- clangd = {},
         -- gopls = {},
