@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, xdg, ... }:
 
 let 
   bazel_symlink_bazelisk = pkgs.runCommand "bazel" { } ''
@@ -79,13 +79,13 @@ in {
   # environment.
   home.packages = [
     bazel_symlink_bazelisk
-    customAwscli2
     pkgs.bat
     pkgs.zoxide
     pkgs.nerd-fonts.fira-code
     pkgs.fzf
     pkgs.oh-my-zsh
-    pkgs.spaceship-prompt
+    #pkgs.spaceship-prompt
+    pkgs.starship
     pkgs.jq
     pkgs.tree
     pkgs.chezmoi
@@ -116,6 +116,7 @@ in {
     pkgs.parallel
     pkgs.hyperfine
     pkgs.xz
+    pkgs.lazygit
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -178,9 +179,11 @@ in {
     };
     initExtra = ''
       # Source Spaceship Prompt
-      source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-      autoload -U promptinit; promptinit
-      prompt spaceship
+      # source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
+      # autoload -U promptinit; promptinit
+      # prompt spaceship
+
+      eval "$(starship init zsh)"
 
       # Set the direnv init
       eval "$(direnv hook zsh)"
@@ -372,5 +375,52 @@ in {
   macos-titlebar-style = hidden
   macos-titlebar-proxy-icon = hidden
   macos-window-shadow = false
+  '';
+
+  home.file."${config.xdg.configHome}/starship.toml".text = ''
+  format = """
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_state\
+  $git_status\
+  $line_break\
+  $python\
+  $character"""
+
+  [directory]
+  style = "blue"
+
+  [character]
+  success_symbol = "[╰►](blue)"
+  error_symbol = "[╰►](red)"
+  vimcmd_symbol = "[╰►](green)"
+
+  [git_branch]
+  format = "[$branch]($style)"
+  style = "bright-black"
+
+  [git_status]
+  format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+  style = "cyan"
+  conflicted = "​"
+  untracked = "​"
+  modified = "​"
+  staged = "​"
+  renamed = "​"
+  deleted = "​"
+  stashed = "≡"
+
+  [git_state]
+  format = '\([$state( $progress_current/$progress_total)]($style)\) '
+  style = "bright-black"
+
+  [cmd_duration]
+  format = "[$duration]($style) "
+  style = "yellow"
+
+  [python]
+  format = "[$virtualenv]($style) "
+  style = "bright-black"
   '';
 }
