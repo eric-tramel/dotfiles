@@ -1104,10 +1104,13 @@ require("lazy").setup({
     "folke/snacks.nvim",
     ---@type snacks.Config,
     opts = {
-      lazygit = {}
+      lazygit = {},
+      notifier = { enabled = true },
     },
     keys = {
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazy[g]it" },
+      { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+
     }
   },
 
