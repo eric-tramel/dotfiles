@@ -84,7 +84,6 @@ in {
     pkgs.nerd-fonts.fira-code
     pkgs.fzf
     pkgs.oh-my-zsh
-    #pkgs.spaceship-prompt
     pkgs.starship
     pkgs.jq
     pkgs.tree
@@ -117,6 +116,7 @@ in {
     pkgs.hyperfine
     pkgs.xz
     pkgs.lazygit
+    pkgs.texlive.combined.scheme-medium
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -178,16 +178,11 @@ in {
       plugins = [ "git" ];
     };
     initExtra = ''
-      # Source Spaceship Prompt
-      # source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-      # autoload -U promptinit; promptinit
-      # prompt spaceship
-
-      eval "$(starship init zsh)"
-
       # Set the direnv init
       eval "$(direnv hook zsh)"
 
+      # Source secrets
+      source $HOME/.config/.secrets
     '';
   };
   
