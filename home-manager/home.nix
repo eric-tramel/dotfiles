@@ -179,6 +179,9 @@ in {
       plugins = [ "git" ];
     };
     initExtra = ''
+      # Setup starship
+      eval "$(starship init zsh)"
+
       # Set the direnv init
       eval "$(direnv hook zsh)"
 
