@@ -648,6 +648,7 @@ require("lazy").setup({
         eslint = {},
         html = {},
         cssls = {},
+        texlab = {}
       }
 
       -- Ensure the servers and tools above are installed
@@ -670,6 +671,7 @@ require("lazy").setup({
         "eslint",
         "html",
         "cssls",
+        "texlab",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -1257,7 +1259,8 @@ require('mason-tool-installer').setup(
     ensure_installed = {
       'debugpy',
       'basedpyright',
-      'ruff'
+      'ruff',
+      'texlab'
     }
   }
 )
