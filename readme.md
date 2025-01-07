@@ -15,7 +15,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
   sh -s -- install --determinate
 ```
 
-### Dotfiles Setup
+### System Setup
 
 Note that if you have custom `.zsh` etc configurations, you will need to find out how to port them into the your fork of `home.nix`, otherwise you're going to end up with `nix` conflicts with your existing files. 
 
@@ -27,6 +27,10 @@ $ cd $HOME/.config/home-manager
 $ nix flake update
 $ home-manager switch
 ```
+
+### Neovim
+
+Add neovim configuration manually if you desire -- link or copy the `nvim/init.lua` to your `$HOME/.config/nvim/init.lua`. 
 
 
 ## Resetting Key Presses
