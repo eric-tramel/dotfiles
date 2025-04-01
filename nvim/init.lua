@@ -613,6 +613,8 @@ require("lazy").setup({
             basedpyright = {
               analysis = {
                 typeCheckingMode = "standard",
+                exclude = {"**/*.ipynb", },
+                ignore = {"**/*.ipynb", },
               },
             },
           },
@@ -1039,14 +1041,8 @@ require("lazy").setup({
     config = function()
       require("venv-selector").setup({
         settings = {
-          search = {
-            anaconda_envs = {
-              command = "fd bin/python$ /opt/homebrew/Caskroom/miniforge/base/envs --full-path --color never -E /proc",
-            },
-            anaconda_base = {
-              command = "fd /python$ /opt/homebrew/Caskroom/miniforge/base/bin --full-path --color never -E /proc",
-            },
-          },
+          search_workspace = true,
+          name = {".venv"}
         },
       })
       vim.keymap.set("n", "<leader>v", "<cmd>VenvSelect<cr>", { desc = "Set Python en[v]ironment" })
@@ -1062,7 +1058,10 @@ require("lazy").setup({
     version = false, -- set this if you want to always pull the latest change
     opts = {
       -- add any opts here
-      provider = "openai"
+      provider = "openai",
+      openai = {
+        model = "gpt-4o"
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
