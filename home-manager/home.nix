@@ -79,7 +79,9 @@ in {
   # environment.
   home.packages = [
     bazel_symlink_bazelisk
+    customAwscli2
     pkgs.bat
+    pkgs.ruff
     pkgs.zoxide
     pkgs.nerd-fonts.fira-code
     pkgs.fzf
@@ -90,13 +92,14 @@ in {
     pkgs.chezmoi
     pkgs.git
     pkgs.gita
+    pkgs.git-lfs
     pkgs.htop
     pkgs.imgcat
     pkgs.nodejs
     pkgs.ripgrep
     pkgs.fd
     pkgs.btop
-    pkgs.uv
+    #pkgs.uv                  # Have to self manage for now
     pkgs.wget
     pkgs.aerospace
     pkgs.jankyborders
@@ -184,6 +187,9 @@ in {
 
       # Set the direnv init
       eval "$(direnv hook zsh)"
+
+      # Set uv install 
+      source $HOME/.local/bin/env
 
       # Source secrets
       source $HOME/.config/.secrets
@@ -274,6 +280,7 @@ in {
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "Eric W. Tramel";
     userEmail = "eric.tramel@gmail.com";
     extraConfig = {
