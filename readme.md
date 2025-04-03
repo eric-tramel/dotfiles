@@ -20,7 +20,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 Note that if you have custom `.zsh` etc configurations, you will need to find out how to port them into the your fork of `home.nix`, otherwise you're going to end up with `nix` conflicts with your existing files. 
 
 ```
-$ git clone git@github.com:git@github.com:eric-tramel/dotfiles.git
+$ git clone https://github.com/eric-tramel/dotfiles.git
 $ cd dotfiles
 $ ln -s $home-manager $HOME/.config/home-manager
 $ cd $HOME/.config/home-manager
